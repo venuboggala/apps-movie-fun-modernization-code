@@ -21,6 +21,7 @@ applications:
 - name: movie-fun-app
   path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
   services:
+  - movie-fun-config
   - moviefun-s3
   env:
     ALBUMS_URL: http://album-service.cfapps-02.haas-66.pez.pivotal.io/albums
