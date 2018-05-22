@@ -1,21 +1,21 @@
 ---
 resources:
 - name: moviefun
- type: git
- source:
-   uri: {{github-repository}}
-   branch: migrations
-   private_key: {{github-private-key}}
+  type: git
+  source:
+    uri: {{github-repository}}
+    branch: migrations
+    private_key: {{github-private-key}}
 
-jobs:
-- name: migrate
- plan:
- - get: moviefun
- - task: migrate-databases
-   file: moviefun/ci/migrate.yml
-   params:
-     CF_API_URL: {{cf-api-url}}
-     CF_USERNAME: {{cf-username}}
-     CF_PASSWORD: {{cf-password}}
-     CF_ORG: {{cf-org}}
-     CF_SPACE: {{cf-space}}
+  jobs:
+  - name: migrate
+  plan:
+  - get: moviefun
+  - task: migrate-databases
+    file: moviefun/ci/migrate.yml
+    params:
+      CF_API_URL: {{cf-api-url}}
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_ORG: {{cf-org}}
+      CF_SPACE: {{cf-space}}
