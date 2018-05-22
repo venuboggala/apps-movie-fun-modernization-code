@@ -1,0 +1,22 @@
+platform: linux
+
+image_resource:
+ type: docker-image
+ source:
+   repository: openjdk
+   tag: '8-jdk'
+
+inputs:
+ - name: moviefun
+
+run:
+ path: bash
+ args:
+ - -exc
+ - |
+   cd moviefun
+   curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx
+   chmod +x cf
+   mv cf /usr/local/bin/
+   cf login -a $CF_API_URL -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
+   CF_MIGRATE=true ./gradlew cfMigrate

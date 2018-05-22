@@ -1,0 +1,24 @@
+buildscript {
+    dependencies {
+        classpath "mysql:mysql-connector-java:$mysqlVersion"
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "4.0.3"
+}
+
+flyway {
+    url = "jdbc:mysql://localhost:3306/albums?useSSL=false"
+    user = "root"
+    outOfOrder = false
+}
+
+task cfMigrate(type: FlywayMigrateTask) {
+    extension = new FlywayExtension(
+            url: "jdbc:mysql://10.0.8.18:3306/cf_a23ab82b_b228_4f33_8daf_33702c880d17?user=nzuEbGhOZZKXEor8\u0026password=Y4tSPUDv1ZMpb6KF",
+            user: "nzuEbGhOZZKXEor8",
+            password: "Y4tSPUDv1ZMpb6KF",
+            outOfOrder: false
+    )
+}
