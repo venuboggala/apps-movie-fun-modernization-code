@@ -26,6 +26,6 @@ applications:
   path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
   services:
   - moviefun-s3
+  - movie-fun-config
   routes:
   - route: movie-fun-venu.apps.pikes.pal.pivotal.io
-
