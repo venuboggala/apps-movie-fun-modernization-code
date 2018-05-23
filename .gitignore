@@ -5,4 +5,3 @@ build
 .idea
 .env
 .gradle
-ci/variables.yml
